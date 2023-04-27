@@ -200,6 +200,15 @@ var determine_basal = function determine_basal(glucose_status, currenttemp, iob_
         halfBasalTarget = 160; // when temptarget is 160 mg/dL, run 50% basal (120 = 75%; 140 = 60%)
         // 80 mg/dL with low_temptarget_lowers_sensitivity would give 1.5x basal, but is limited to autosens_max (1.2x by default)
     }
+    // getting multiplication less or equal to 0 means that we have a really low target with a really low halfBasalTarget
+    // we use multiplication instead of the division to avoid "division by zero error"
+    // with low TT and lowTTlowersSensitivity we need autosens_max as a value
+    if (c * (c + target_bg-normalTarget) <= 0.0) {
+        sensitivityRatio = profile.autosens_max;
+    }
+    else {
+        sensitivityRatio = c/(c+target_bg-normalTarget);
+    }
 
     //*********************************************************************************
     //**                   Start of Dynamic ISF code for predictions                 **
