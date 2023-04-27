@@ -8,7 +8,6 @@ data class GlucoseStatus(
     val longAvgDelta: Double = 0.0,
     val date: Long = 0L,
     val cgmFlatMinutes: Double = 0.0,
-    val date: Long = 0L,
     // mod 7: append 2 variables for 5% range
     val dura_ISF_minutes: Double = 0.0,
     val dura_ISF_average: Double = 0.0,

@@ -182,18 +182,18 @@ class OverviewFragment : DaggerFragment(), View.OnClickListener, OnLongClickList
         super.onViewCreated(view, savedInstanceState)
 
         // Mod exercise mode toggle icon
-        if ( sp.getBoolean(R.string.key_high_temptarget_raises_sensitivity, false)) {
-            binding.exerciseModeCheckboxIcon.setImageResource(R.drawable.exercise)
+        if ( sp.getBoolean("high_temptarget_raises_sensitivity", false)) {
+            binding.exerciseModeCheckboxIcon.setImageResource(info.nightscout.core.main.R.drawable.exercise)
         } else {
-            binding.exerciseModeCheckboxIcon.setImageResource(R.drawable.exerciseinactive)
+            binding.exerciseModeCheckboxIcon.setImageResource(info.nightscout.core.main.R.drawable.exerciseinactive)
         }
         binding.exerciseModeCheckboxIcon.setOnClickListener {
-            if (sp.getBoolean(R.string.key_high_temptarget_raises_sensitivity, false) == true) {
-                binding.exerciseModeCheckboxIcon.setImageResource(R.drawable.exerciseinactive)
-                sp.putBoolean(R.string.key_high_temptarget_raises_sensitivity, false)
+            if (sp.getBoolean(info.nightscout.core.utils.R.string.key_high_temptarget_raises_sensitivity, false) == true) {
+                binding.exerciseModeCheckboxIcon.setImageResource(info.nightscout.core.main.R.drawable.exerciseinactive)
+                sp.putBoolean(info.nightscout.core.utils.R.string.key_high_temptarget_raises_sensitivity, false)
             } else {
-                binding.exerciseModeCheckboxIcon.setImageResource(R.drawable.exercise)
-                sp.putBoolean(R.string.key_high_temptarget_raises_sensitivity, true)
+                binding.exerciseModeCheckboxIcon.setImageResource(info.nightscout.core.main.R.drawable.exercise)
+                sp.putBoolean(info.nightscout.core.utils.R.string.key_high_temptarget_raises_sensitivity, true)
             }
         }
         // Mod end

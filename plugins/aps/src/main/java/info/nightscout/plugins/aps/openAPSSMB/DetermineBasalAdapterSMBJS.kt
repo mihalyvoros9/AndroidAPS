@@ -38,7 +38,6 @@ import java.io.IOException
 import java.lang.reflect.InvocationTargetException
 import java.nio.charset.StandardCharsets
 import javax.inject.Inject
-import info.nightscout.androidaps.BuildConfig
 
 class DetermineBasalAdapterSMBJS internal constructor(private val scriptReader: ScriptReader, private val injector: HasAndroidInjector) : DetermineBasalAdapter {
 
@@ -192,12 +191,12 @@ class DetermineBasalAdapterSMBJS internal constructor(private val scriptReader: 
         this.profile.put("max_daily_safety_multiplier", sp.getInt(R.string.key_openapsama_max_daily_safety_multiplier, 3))
         this.profile.put("current_basal_safety_multiplier", sp.getDouble(R.string.key_openapsama_current_basal_safety_multiplier, 4.0))
 
-        this.profile.put("high_temptarget_raises_sensitivity", sp.getBoolean(R.string.key_high_temptarget_raises_sensitivity, SMBDefaults.high_temptarget_raises_sensitivity))
-        this.profile.put("low_temptarget_lowers_sensitivity", sp.getBoolean(R.string.key_low_temptarget_lowers_sensitivity, SMBDefaults.low_temptarget_lowers_sensitivity))
+        this.profile.put("high_temptarget_raises_sensitivity", sp.getBoolean("high_temptarget_raises_sensitivity", SMBDefaults.high_temptarget_raises_sensitivity))
+        this.profile.put("low_temptarget_lowers_sensitivity", sp.getBoolean("low_temptarget_lowers_sensitivity", SMBDefaults.low_temptarget_lowers_sensitivity))
         this.profile.put("sensitivity_raises_target", sp.getBoolean(R.string.key_sensitivity_raises_target, SMBDefaults.sensitivity_raises_target))
         this.profile.put("resistance_lowers_target", sp.getBoolean(R.string.key_resistance_lowers_target, SMBDefaults.resistance_lowers_target))
         this.profile.put("adv_target_adjustments", SMBDefaults.adv_target_adjustments)
-        this.profile.put("exercise_mode", sp.getBoolean(R.string.key_high_temptarget_raises_sensitivity, SMBDefaults.high_temptarget_raises_sensitivity))
+        this.profile.put("exercise_mode", sp.getBoolean("high_temptarget_raises_sensitivity", SMBDefaults.high_temptarget_raises_sensitivity))
         this.profile.put("half_basal_exercise_target", sp.getInt(R.string.key_half_basal_exercise_target, SMBDefaults.half_basal_exercise_target))
         this.profile.put("maxCOB", SMBDefaults.maxCOB)
         this.profile.put("skip_neutral_temps", pump.setNeutralTempAtFullHour())
@@ -229,7 +228,7 @@ class DetermineBasalAdapterSMBJS internal constructor(private val scriptReader: 
         this.profile.put("temptargetSet", tempTargetSet)
         this.profile.put("autosens_max", SafeParse.stringToDouble(sp.getString(info.nightscout.core.utils.R.string.key_openapsama_autosens_max, "1.2")))
         // mod 7e: can I add use autoisf here?
-        this.profile.put("autoISF_version", BuildConfig.AUTOISF_VERSION)
+        this.profile.put("autoISF_version", 1)
         this.profile.put("enable_autoISF", sp.getBoolean(R.string.key_enable_autoISF, false))
         // mod 7f: can I add use autoisf with COB here?
         this.profile.put("autoISF_max",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_autoISF_max, "1.0")))
