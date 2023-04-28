@@ -166,7 +166,7 @@
             android:summary="@string/low_temptarget_lowers_sensitivity_summary"
             android:title="@string/low_temptarget_lowers_sensitivity_title" />
 
-        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+        <info.nightscout.core.validators.ValidatingEditTextPreference
             android:defaultValue="160"
             android:dialogMessage="@string/half_basal_exercise_target_summary"
             android:digits="0123456789"
